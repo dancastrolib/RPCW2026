@@ -1,0 +1,65 @@
+@prefix : <http://www.di.uminho.pt/rpcw2026/manifesto#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ManifestoOntology a owl:Ontology .
+
+############################
+# Classes
+############################
+:Manifesto a owl:Class .
+:Trabalho a owl:Class .      # TPC1, TPC2, ...
+:Recurso a owl:Class .       # ficheiro/link
+:Comando a owl:Class .       # comando de execução (opcional)
+
+############################
+# Object properties
+############################
+:manifestoDe a owl:ObjectProperty ;
+  rdfs:domain :Manifesto ;
+  rdfs:range :Trabalho .
+
+:temRecurso a owl:ObjectProperty ;
+  rdfs:domain :Trabalho ;
+  rdfs:range :Recurso .
+
+:temComando a owl:ObjectProperty ;
+  rdfs:domain :Trabalho ;
+  rdfs:range :Comando .
+
+############################
+# Datatype properties
+############################
+:titulo a owl:DatatypeProperty ;
+  rdfs:domain :Manifesto ;
+  rdfs:range xsd:string .
+
+:data a owl:DatatypeProperty ;
+  rdfs:domain :Manifesto ;
+  rdfs:range xsd:date .
+
+:resumo a owl:DatatypeProperty ;
+  rdfs:domain :Manifesto ;
+  rdfs:range xsd:string .
+
+:numero a owl:DatatypeProperty ;
+  rdfs:domain :Trabalho ;
+  rdfs:range xsd:integer .
+
+:descricao a owl:DatatypeProperty ;
+  rdfs:domain :Trabalho ;
+  rdfs:range xsd:string .
+
+:nome a owl:DatatypeProperty ;
+  rdfs:domain :Recurso ;
+  rdfs:range xsd:string .
+
+:caminho a owl:DatatypeProperty ;
+  rdfs:domain :Recurso ;
+  rdfs:range xsd:string .
+
+:texto a owl:DatatypeProperty ;
+  rdfs:domain :Comando ;
+  rdfs:range xsd:string .
