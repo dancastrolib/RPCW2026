@@ -1,26 +1,24 @@
 # TPC1 — Geração de Ontologia a partir de um dataset JSON
 
+**TPC:** 1
+
 **Data:** 2026-02-03
 
-## Objetivo
-- Especificar um modelo ontológico para representar listas de compras em JSON (classes, atributos e relações).
-- (Opcional) Representar o modelo em OWL/RDF (Turtle) e/ou gerar instâncias a partir do dataset.
 
-## Descrição do trabalho
-O dataset é constituído por uma lista de listas de compras. Cada lista tem uma designação, uma data e um conjunto de produtos, onde cada produto inclui designação, categoria e quantidade (valor + unidade).
+## Resumo
+Modelo ontológico + instância do manifesto + geração automática do README a partir de RDF.
 
-## Modelo ontológico (resumo)
-- **Classes:** ListaDeCompras, ItemDeCompra, Produto, Categoria, Quantidade, Unidade
-- **Relações:** temItem, refereProduto, temCategoria, temQuantidade, temUnidade
-- **Atributos:** designacaoLista, data, designacaoProduto, designacaoCategoria, valor
+
+## Descrição
+Especificação de uma ontologia para listas de compras e geração automática do manifesto.
+
 
 ## Ficheiros
-- `README.md` — manifesto do TPC
-- `ontologia.ttl` — ontologia em OWL/Turtle (se aplicável)
-- `dataset.json` — dataset de entrada (se aplicável)
-- `script.py` — geração de instâncias/transformação (se aplicável)
+- **Ontologia do manifesto** — `TPC1/manifesto.ttl`
+- **Script Python gerador do README** — `TPC1/gera_readme.py`
 
-## Como executar (se aplicável)
+
+## Como executar
 ```bash
-# exemplo
-python script.py
+python3 gera_readme.py manifesto.ttl manifesto_tpc1.ttl README.md 
+```
