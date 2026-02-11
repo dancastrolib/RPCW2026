@@ -1,0 +1,24 @@
+@prefix : <http://www.di.uminho.pt/rpcw2026/manifesto#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ManifestoTPC1 a :Manifesto ;
+    :titulo "TPC1 — Geração de Ontologia a partir de um dataset JSON" ;
+    :data "2026-02-03"^^xsd:date ;
+    :manifestoDe :TPC1 .
+
+:TPC1 a :Trabalho ;
+    :numero 1 ;
+    :descricao "Especificação de uma ontologia para listas de compras e geração automática do manifesto." ;
+    :temRecurso :R1, :R2 ;
+    :temComando :C1 .
+
+:R1 a :Recurso ;
+    :nome "Ontologia do manifesto" ;
+    :caminho "TPC1/manifesto.ttl" .
+
+:R2 a :Recurso ;
+    :nome "Script Python gerador do README" ;
+    :caminho "TPC1/gera_readme.py" .
+
+:C1 a :Comando ;
+    :texto "python3 gera_readme.py manifesto.ttl manifesto_tpc1.ttl README.md turtle" .
