@@ -10,56 +10,86 @@
 # Classes
 ############################
 :Manifesto a owl:Class .
-:Trabalho a owl:Class .      # TPC1, TPC2, ...
-:Recurso a owl:Class .       # ficheiro/link
-:Comando a owl:Class .       # comando de execução (opcional)
+:Trabalho  a owl:Class .      # TPC1, TPC2, ...
+:Recurso   a owl:Class .      # ficheiro/link
+:Comando   a owl:Class .      # comando de execução
 
 ############################
 # Object properties
 ############################
 :manifestoDe a owl:ObjectProperty ;
   rdfs:domain :Manifesto ;
-  rdfs:range :Trabalho .
+  rdfs:range  :Trabalho .
 
 :temRecurso a owl:ObjectProperty ;
   rdfs:domain :Trabalho ;
-  rdfs:range :Recurso .
+  rdfs:range  :Recurso .
 
 :temComando a owl:ObjectProperty ;
   rdfs:domain :Trabalho ;
-  rdfs:range :Comando .
+  rdfs:range  :Comando .
 
 ############################
 # Datatype properties
 ############################
 :titulo a owl:DatatypeProperty ;
   rdfs:domain :Manifesto ;
-  rdfs:range xsd:string .
+  rdfs:range  xsd:string .
 
 :data a owl:DatatypeProperty ;
   rdfs:domain :Manifesto ;
-  rdfs:range xsd:date .
+  rdfs:range  xsd:date .
 
 :resumo a owl:DatatypeProperty ;
   rdfs:domain :Manifesto ;
-  rdfs:range xsd:string .
+  rdfs:range  xsd:string .
 
 :numero a owl:DatatypeProperty ;
   rdfs:domain :Trabalho ;
-  rdfs:range xsd:integer .
+  rdfs:range  xsd:integer .
 
 :descricao a owl:DatatypeProperty ;
   rdfs:domain :Trabalho ;
-  rdfs:range xsd:string .
+  rdfs:range  xsd:string .
 
 :nome a owl:DatatypeProperty ;
   rdfs:domain :Recurso ;
-  rdfs:range xsd:string .
+  rdfs:range  xsd:string .
 
 :caminho a owl:DatatypeProperty ;
   rdfs:domain :Recurso ;
-  rdfs:range xsd:string .
+  rdfs:range  xsd:string .
+
+:url a owl:DatatypeProperty ;
+  rdfs:domain :Recurso ;
+  rdfs:range  xsd:anyURI .
 
 :texto a owl:DatatypeProperty ;
   rdfs:domain :Comando ;
-  rdfs:range xsd:string .
+  rdfs:range  xsd:string .
+
+############################
+# Restrições (cardinalidades)
+############################
+
+# Um Manifesto descreve exatamente 1 Trabalho
+:Manifesto rdfs:subClassOf [
+  a owl:Restriction ;
+  owl:onProperty :manifestoDe ;
+  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  owl:onClass :Trabalho
+] .
+
+# Um Trabalho pode ter 0..N recursos, mas se tiver, são Recurso
+:Trabalho rdfs:subClassOf [
+  a owl:Restriction ;
+  owl:onProperty :temRecurso ;
+  owl:allValuesFrom :Recurso
+] .
+
+# Um Trabalho pode ter 0..N comandos, mas se tiver, são Comando
+:Trabalho rdfs:subClassOf [
+  a owl:Restriction ;
+  owl:onProperty :temComando ;
+  owl:allValuesFrom :Comando
+] .
