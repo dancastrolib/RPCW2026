@@ -4,6 +4,7 @@
 :ManifestoTPC1 a :Manifesto ;
     :titulo "TPC1 — Geração de Ontologia a partir de um dataset JSON" ;
     :data "2026-02-03"^^xsd:date ;
+    :resumo "Modelo ontológico + instância do manifesto + geração automática do README a partir de RDF." ;
     :manifestoDe :TPC1 .
 
 :TPC1 a :Trabalho ;
